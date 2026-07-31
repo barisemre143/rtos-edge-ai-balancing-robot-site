@@ -1,4 +1,4 @@
-name: GitHub Pages'e daÄŸÄ±t
+name: GitHub Pages'e dagit
 
 on:
   push:
@@ -21,22 +21,22 @@ jobs:
       - name: Repository'yi al
         uses: actions/checkout@v6
 
-      - name: Node.js ortamÄ±nÄ± hazÄ±rla
+      - name: Node.js ortamini hazirla
         uses: actions/setup-node@v6
         with:
           node-version: 24
           cache: npm
 
-      - name: BaÄŸÄ±mlÄ±lÄ±klarÄ± kur
+      - name: Bagimliliklari kur
         run: npm install --no-package-lock --no-audit --no-fund
 
-      - name: Production build oluÅŸtur
+      - name: Production build olustur
         run: npm run build
 
-      - name: GitHub Pages'i yapÄ±landÄ±r
+      - name: GitHub Pages'i yapilandir
         uses: actions/configure-pages@v5
 
-      - name: Build Ã§Ä±ktÄ±sÄ±nÄ± yÃ¼kle
+      - name: Build ciktisini yukle
         uses: actions/upload-pages-artifact@v4
         with:
           path: ./dist
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: GitHub Pages'e daÄŸÄ±t
+      - name: GitHub Pages'e dagit
         id: deployment
         uses: actions/deploy-pages@v4
 
