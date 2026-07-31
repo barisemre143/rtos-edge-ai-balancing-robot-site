@@ -534,7 +534,7 @@ function App() {
 
           <div className="contact-links">
             <a
-              href="https://github.com/barisemre143/rtos-edge-ai-balancing-robot"
+              href="https://github.com/barisemre143/rtos-edge-ai-balancing-robot-site"
               target="_blank"
               rel="noreferrer"
             >
@@ -563,4 +563,3 @@ function App() {
 }
 
 export default App;
-
