@@ -8,6 +8,8 @@ type Report = {
   pdf?: string;
 };
 
+const siteBase = import.meta.env.BASE_URL;
+
 const navigation = [
   ["Proje", "#proje"],
   ["Mimari", "#mimari"],
@@ -73,35 +75,35 @@ const reports: Report[] = [
     title: "Proje Teklifi",
     description: "Problem, araştırma sorusu, hedefler, kapsam ve deney planı.",
     date: "21 Haziran 2026",
-    pdf: "/reports/proposal.pdf",
+    pdf: `${siteBase}reports/proposal.pdf`,
   },
   {
     code: "02",
     title: "Proje Spesifikasyon Raporu",
     description: "Fonksiyonel gereksinimler, kalite hedefleri ve kabul testleri.",
     date: "28 Haziran 2026",
-    pdf: "/reports/specifications.pdf",
+    pdf: `${siteBase}reports/specifications.pdf`,
   },
   {
     code: "03",
     title: "Analiz Raporu",
     description: "Aktörler, kullanım durumları, sistem davranışları ve arayüz beklentileri.",
     date: "12 Temmuz 2026",
-    pdf: "/reports/analysis-report.pdf",
+    pdf: `${siteBase}reports/analysis-report.pdf`,
   },
   {
     code: "04",
     title: "Proje Kısıt ve Etkiler Planı",
     description: "Standartlar, proje kısıtları ile ekonomik, sosyal ve güvenlik etkileri.",
     date: "31 Temmuz 2026",
-    pdf: "/reports/pke-plan.pdf",
+    pdf: `${siteBase}reports/pke-plan.pdf`,
   },
   {
     code: "05",
     title: "Yüksek Seviye Tasarım Raporu",
     description: "Alt sistemler, veri akışları, güvenlik sınırları ve küresel kontrol stratejisi.",
     date: "06 Ağustos 2026",
-    pdf: "/reports/hld-report.pdf",
+    pdf: `${siteBase}reports/hld-report.pdf`,
   },
   {
     code: "06",
