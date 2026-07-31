@@ -2,6 +2,8 @@
 
 TOBB Ekonomi ve Teknoloji Üniversitesi BİL/YAP 495 projesi için hazırlanan Türkçe, erişilebilir ve mobil uyumlu kamu sitesi.
 
+Canlı site: <https://barisemre143.github.io/rtos-edge-ai-balancing-robot-site/>
+
 Proje; FreeRTOS tabanlı iki tekerlekli bir denge robotunda TinyML çıkarım yükünün gerçek zamanlı kontrol döngüsünün zamanlama determinizmine etkisini inceler.
 
 ## Yerel geliştirme
@@ -18,6 +20,8 @@ npm run build
 ```
 
 Statik çıktı `dist/` klasöründe oluşturulur.
+
+`main` dalına gönderilen değişiklikler GitHub Actions üzerinden otomatik olarak GitHub Pages'e yayımlanır.
 
 ## Raporlar
 
