@@ -257,9 +257,8 @@ h3 {
 }
 
 .hero h1 em {
-  color: var(--mint);
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 400;
+  color: inherit;
+  font: inherit;
 }
 
 .hero-lead {
