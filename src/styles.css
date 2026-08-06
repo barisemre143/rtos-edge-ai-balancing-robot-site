@@ -1049,6 +1049,23 @@ h3 {
   background: var(--paper);
 }
 
+.portrait-frame {
+  position: relative;
+  aspect-ratio: 0.88;
+  overflow: hidden;
+  background: #0d2227;
+}
+
+.team-portrait {
+  display: block;
+  width: 120%;
+  max-width: none;
+  height: 100%;
+  margin-left: -20%;
+  object-fit: cover;
+  object-position: center 45%;
+}
+
 .portrait-placeholder {
   position: relative;
   display: grid;
@@ -1131,6 +1148,26 @@ h3 {
   margin-bottom: 1rem;
   color: var(--muted-light);
   font-size: 0.85rem;
+}
+
+.member-link {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--mint-deep);
+  color: #18794e;
+  font-size: 0.66rem;
+  font-weight: 720;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.member-link:hover {
+  color: var(--ink);
+  background: var(--mint);
 }
 
 .status-label {
@@ -1648,8 +1685,13 @@ h3 {
     grid-template-columns: 1fr;
   }
 
-  .portrait-placeholder {
+  .portrait-placeholder,
+  .portrait-frame {
     aspect-ratio: 1.2;
+  }
+
+  .team-portrait {
+    object-position: center 42%;
   }
 
   .report-row {

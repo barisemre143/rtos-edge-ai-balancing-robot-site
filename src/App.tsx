@@ -6,6 +6,15 @@ type Report = {
   description: string;
   date: string;
   pdf?: string;
+  docx?: string;
+};
+
+type TeamMember = {
+  initials: string;
+  name: string;
+  image?: string;
+  bio?: string;
+  linkedin?: string;
 };
 
 const siteBase = import.meta.env.BASE_URL;
@@ -62,10 +71,16 @@ const metrics = [
   ["Güvenli durdurma", "Olay sayısı ve nedeni"],
 ];
 
-const team = [
+const team: TeamMember[] = [
   { initials: "AK", name: "Ali Hakan Kıncal" },
   { initials: "UT", name: "Uğur Talan" },
-  { initials: "MA", name: "Mert Can Ayhan" },
+  {
+    initials: "MA",
+    name: "Mert Can Ayhan",
+    image: `${siteBase}team/mert-can-ayhan.jpeg`,
+    bio: "TOBB ETÜ Bilgisayar Mühendisliği son sınıf öğrencisi. HAVELSAN’da Simülasyon, Otonom ve Platform Yönetim Sistemleri; İnnova Bilişim’de Full Stack geliştirme alanlarında deneyim kazandı.",
+    linkedin: "https://www.linkedin.com/in/mert-can-ayhan-b56101309/",
+  },
   { initials: "BA", name: "Barış Emre Ahi" },
 ];
 
@@ -76,6 +91,7 @@ const reports: Report[] = [
     description: "Problem, araştırma sorusu, hedefler, kapsam ve deney planı.",
     date: "21 Haziran 2026",
     pdf: `${siteBase}reports/proposal.pdf`,
+    docx: `${siteBase}reports/proposal.docx`,
   },
   {
     code: "02",
@@ -83,6 +99,7 @@ const reports: Report[] = [
     description: "Fonksiyonel gereksinimler, kalite hedefleri ve kabul testleri.",
     date: "28 Haziran 2026",
     pdf: `${siteBase}reports/specifications.pdf`,
+    docx: `${siteBase}reports/specifications.docx`,
   },
   {
     code: "03",
@@ -90,6 +107,7 @@ const reports: Report[] = [
     description: "Aktörler, kullanım durumları, sistem davranışları ve arayüz beklentileri.",
     date: "12 Temmuz 2026",
     pdf: `${siteBase}reports/analysis-report.pdf`,
+    docx: `${siteBase}reports/analysis-report.docx`,
   },
   {
     code: "04",
@@ -97,6 +115,7 @@ const reports: Report[] = [
     description: "Standartlar, proje kısıtları ile ekonomik, sosyal ve güvenlik etkileri.",
     date: "31 Temmuz 2026",
     pdf: `${siteBase}reports/pke-plan.pdf`,
+    docx: `${siteBase}reports/pke-plan.docx`,
   },
   {
     code: "05",
@@ -104,6 +123,7 @@ const reports: Report[] = [
     description: "Alt sistemler, veri akışları, güvenlik sınırları ve küresel kontrol stratejisi.",
     date: "06 Ağustos 2026",
     pdf: `${siteBase}reports/hld-report.pdf`,
+    docx: `${siteBase}reports/hld-report.docx`,
   },
   {
     code: "06",
@@ -113,6 +133,12 @@ const reports: Report[] = [
   },
   {
     code: "07",
+    title: "Test Planı Raporu",
+    description: "Test stratejisi, test senaryoları, doğrulama yöntemleri ve kabul kriterleri.",
+    date: "Hazırlanıyor",
+  },
+  {
+    code: "08",
     title: "Final Raporu",
     description: "Deney sonuçları, karşılaştırmalı bulgular ve proje değerlendirmesi.",
     date: "Hazırlanıyor",
@@ -444,19 +470,40 @@ function App() {
           <div className="team-grid">
             {team.map((member, index) => (
               <article className="team-card" key={member.name}>
-                <div
-                  className="portrait-placeholder"
-                  role="img"
-                  aria-label={`${member.name} için fotoğraf hazırlanıyor`}
-                >
-                  <span>{member.initials}</span>
-                  <small>FOTOĞRAF HAZIRLANIYOR</small>
-                </div>
+                {member.image ? (
+                  <div className="portrait-frame">
+                    <img
+                      className="team-portrait"
+                      src={member.image}
+                      alt={`${member.name} için fotoğraf`}
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="portrait-placeholder"
+                    role="img"
+                    aria-label={`${member.name} için fotoğraf hazırlanıyor`}
+                  >
+                    <span>{member.initials}</span>
+                    <small>FOTOĞRAF HAZIRLANIYOR</small>
+                  </div>
+                )}
                 <div className="team-card-copy">
                   <span className="member-index">{String(index + 1).padStart(2, "0")}</span>
                   <h3>{member.name}</h3>
-                  <p>Kısa biyografi hazırlanıyor.</p>
-                  <span className="status-label">LinkedIn hazırlanıyor</span>
+                  <p>{member.bio ?? "Kısa biyografi hazırlanıyor."}</p>
+                  {member.linkedin ? (
+                    <a
+                      className="member-link"
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      LinkedIn profili <Arrow />
+                    </a>
+                  ) : (
+                    <span className="status-label">LinkedIn hazırlanıyor</span>
+                  )}
                 </div>
               </article>
             ))}
@@ -495,7 +542,13 @@ function App() {
                   ) : (
                     <span className="status-label">PDF hazırlanıyor</span>
                   )}
-                  <span className="status-label">DOCX hazırlanıyor</span>
+                  {report.docx ? (
+                    <a href={report.docx} download>
+                      DOCX’i indir <Arrow />
+                    </a>
+                  ) : (
+                    <span className="status-label">DOCX hazırlanıyor</span>
+                  )}
                 </div>
               </article>
             ))}
