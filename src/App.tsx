@@ -73,7 +73,11 @@ const metrics = [
 
 const team: TeamMember[] = [
   { initials: "AK", name: "Ali Hakan Kıncal" },
-  { initials: "UT", name: "Uğur Talan" },
+  { initials: "UT", name: "Uğur Talan",
+    image: `${siteBase}team/ugur-talan.png`,
+    bio: "TOBB ETÜ Bilgisayar Mühendisliği son sınıf öğrencisi. ServePointLabs'ta Android geliştirici olarak aktif çalışmaktadır",
+    linkedin: "https://www.linkedin.com/in/u%C4%9Fur-talan-2090b6207/",
+   },
   {
     initials: "MA",
     name: "Mert Can Ayhan",
